@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@600;700;800&display=swap');
+
+body {
+  margin: 0;
+  background-color: #010616;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.contenedor-principal {
+  max-width: 1150px; /* AMPLIAMOS LA PLATAFORMA para que no se vea apretada */
+  margin: 40px auto;
+  padding: 20px;
+  position: relative; /* Clave para anclar la leyenda */
+}
+
+/* CABECERA Y LEYENDA ANCLADA */
+/* ... resto de tu código ... */
+
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Alineación vertical */
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
+.titulo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0;
+  text-align: left; 
+}
+
+/* RESPONSIVIDAD PARA CELULARES */
+@media (max-width: 850px) {
+  .cabecera {
+    flex-direction: column; 
+    align-items: center;   
+    text-align: center;    
+  }
+  
+  .titulo {
+    text-align: center;    
+    font-size: 1.8rem;
+  }
+  
+  .leyenda {
+    width: 100%;
+    justify-content: center; 
+    margin-top: 15px;
+  }
+  
+  
+}
+.leyenda {
+  display: flex;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.item-leyenda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+}
+
+.seccion-modalidad {
+  margin-bottom: 50px;
+}
+
+.subtitulo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.fila-horario {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 30px;
+}
+
+
+.info-grupo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 320px; 
+  flex-shrink: 0;
+}
+
+.bloque-letra {
+  background-color: #64B5F6;
+  color: #0B194C;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.texto-horario {
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.3;
+  width: 100%;
+}
+
+/* ========================================================== */
+/* MÁS COLUMNAS DE SILLAS Y MEJOR DISTRIBUCIÓN                */
+/* ========================================================== */
+.contenedor-sillas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; 
+  max-width: 680px; 
+}
+
+/* MENÚ DE IDIOMAS */
+.menu-idiomas {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 20px;
+}
+
+.btn-idioma {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 24px;
+  border-radius: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-idioma:hover {
+  color: white;
+  border-color: white;
+}
+
+.btn-idioma.activo {
+  background-color: #64B5F6;
+  color: #0B194C;
+  border-color: #64B5F6;
+}
+
+/* RESPONSIVIDAD PARA CELULARES */
+@media (max-width: 850px) {
+  .cabecera {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .leyenda {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .fila-horario {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px;
+    border-radius: 12px;
+  }
+  
+  .info-grupo {
+    width: 100%;
+  }
+
+  .titulo {
+    font-size: 2rem;
+  }
+  
+  .contenedor-sillas {
+    max-width: 100%;
+  }
+}
+
+/* Estilos para el nuevo Menú Desplegable */
+.menu-desplegable-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 40px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 15px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 350px;
+}
+
+.label-idioma {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Poppins', sans-serif;
+}
+
+.select-idioma {
+  background-color: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.select-idioma:hover, .select-idioma:focus {
+  border-color: #64B5F6;
+}
