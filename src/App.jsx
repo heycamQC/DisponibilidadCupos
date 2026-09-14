@@ -142,7 +142,13 @@ function App() {
   const mostrarIntensivo = !planNormalizado || planNormalizado.includes('intensivo');
 
   return (
-    <div className="contenedor-principal" style={{ backgroundColor: temaActual.fondo, minHeight: '90vh', padding: '40px', borderRadius: '16px' }}>
+    <div className="contenedor-principal" style={{ 
+      backgroundColor: temaActual.fondo, 
+      minHeight: '100vh', 
+      /* 🔥 AQUÍ ESTÁ EL TRUCO: Quitamos borde y reducimos espacio si se abre en la calculadora */
+      padding: esVistaEstudiante ? '15px' : '40px', 
+      borderRadius: esVistaEstudiante ? '0px' : '16px' 
+    }}>
       <div className="cabecera">
         <h1 className="titulo">Disponibilidad de Cupos  {idiomaRealAMostrar}</h1>
         
