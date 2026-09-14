@@ -13,6 +13,7 @@ html, body, #root {
   background-color: transparent !important; /* Quitamos cualquier fondo negro residual */
   color: white;
   font-family: 'Montserrat', sans-serif;
+  text-align: left;
 }
 
 
