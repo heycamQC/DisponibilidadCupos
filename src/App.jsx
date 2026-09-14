@@ -1,5 +1,4 @@
-import { useState, useMemo } from 'react';
-import { useHorarios } from './hooks/useHorarios';
+import { useState, useMemo, useEffect } from 'react';import { useHorarios } from './hooks/useHorarios';
 import { FilaHorario } from './components/FilaHorario';
 import { SillaIcon } from './components/SillaIcon';
 import './App.css';
@@ -114,6 +113,12 @@ function App() {
 
   const temaActual = temasIdiomas[idiomaRealAMostrar] || temasIdiomas['default'];
 
+  useEffect(() => {
+    document.documentElement.style.backgroundColor = temaActual.fondo;
+    document.body.style.backgroundColor = temaActual.fondo;
+    document.body.style.margin = "0";
+  }, [temaActual]);
+  
   if (cargando) {
     return (
       <div className="contenedor-principal" style={{ textAlign: 'center', marginTop: '50px' }}>
