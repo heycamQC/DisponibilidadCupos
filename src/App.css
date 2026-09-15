@@ -11,6 +11,7 @@ html, body, #root {
   width: 100% !important;
   height: 100% !important;
   min-height: 100vh !important;
+  height: auto !important;
   color: white;
   font-family: 'Montserrat', sans-serif;
   text-align: left;
