@@ -15,23 +15,20 @@ html, body, #root {
   color: white;
   font-family: 'Montserrat', sans-serif;
   text-align: left;
-  /* 🚀 Quitamos el transparent para que tome el color del tema dinámico */
 }
 
 .contenedor-principal {
-  max-width: 1150px; /* AMPLIAMOS LA PLATAFORMA para que no se vea apretada */
+  max-width: 1150px; 
   margin: 40px auto;
   padding: 20px;
-  position: relative; /* Clave para anclar la leyenda */
+  position: relative; 
 }
 
-/* CABECERA Y LEYENDA ANCLADA */
-/* ... resto de tu código ... */
 
 .cabecera {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Alineación vertical */
+  align-items: center; 
   margin-bottom: 40px;
   gap: 20px;
 }

@@ -86,7 +86,6 @@ function App() {
   const { horarios, cargando, error } = useHorarios();
   const [idiomaSeleccionado, setIdiomaSeleccionado] = useState("");
 
-  // 🚀 LECTURA DE PARÁMETROS DESDE LA URL
   const parametroIdiomaUrl = new URLSearchParams(window.location.search).get("idioma");
   const parametroPlanUrl = new URLSearchParams(window.location.search).get("plan");
   
@@ -136,12 +135,10 @@ function App() {
     );
   }
 
-  // Filtrado de datos
   const horariosDelIdioma = horariosActivos.filter(h => h.Idioma === idiomaRealAMostrar);
   const cursosEstandar = horariosDelIdioma.filter(h => h.Modalidad === 'Estándar');
   const cursosIntensivo = horariosDelIdioma.filter(h => h.Modalidad === 'Intensivo');
 
-  // 🚀 LÓGICA INTELIGENTE DE VISIBILIDAD DE PLANES
   const planNormalizado = normalizarTexto(parametroPlanUrl);
   const mostrarEstandar = !planNormalizado || planNormalizado.includes('estandar');
   const mostrarIntensivo = !planNormalizado || planNormalizado.includes('intensivo');
@@ -150,7 +147,6 @@ function App() {
     <div className="contenedor-principal" style={{ 
       backgroundColor: temaActual.fondo, 
       minHeight: '100vh', 
-      /* 🔥 AQUÍ ESTÁ EL TRUCO: Quitamos borde y reducimos espacio si se abre en la calculadora */
       padding: esVistaEstudiante ? '15px' : '40px', 
       borderRadius: esVistaEstudiante ? '0px' : '16px' 
     }}>
@@ -187,7 +183,6 @@ function App() {
         </div>
       )}
       
-      {/* 🚀 SECCIÓN ESTÁNDAR (Solo se muestra si corresponde) */}
       {mostrarEstandar && cursosEstandar.length > 0 && (
         <div className="seccion-modalidad">
           <h2 className="subtitulo">Estándar</h2>

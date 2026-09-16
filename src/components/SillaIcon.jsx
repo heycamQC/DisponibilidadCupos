@@ -1,6 +1,5 @@
 
 export const SillaIcon = ({ estado, colorOcupada, colorDisponible }) => {
-  // Si está ocupada usa su color asignado, si está disponible usa el suyo (por defecto blanco)
   const colorIcono = estado === 'ocupada' ? (colorOcupada || '#4285F4') : (colorDisponible || '#FFFFFF');
 
   return (

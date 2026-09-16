@@ -4,7 +4,6 @@ import Papa from 'papaparse';
 const csvUrlBase = import.meta.env.VITE_CSV_URL;
 
 export const useHorarios = () => {
-  // Inicializamos el estado del error de una vez si falta la variable (Cero efectos innecesarios)
   const [horarios, setHorarios] = useState(() => {
     const datosGuardados = sessionStorage.getItem('cupos_cache');
     return datosGuardados ? JSON.parse(datosGuardados) : [];
