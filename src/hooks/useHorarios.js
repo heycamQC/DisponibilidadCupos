@@ -15,14 +15,24 @@ export const useHorarios = () => {
   useEffect(() => {
     if (!csvUrlBase) return;
 
-  
     const urlSinCache = `${csvUrlBase}&t=${new Date().getTime()}`;
 
     Papa.parse(urlSinCache, {
       download: true,
       header: true,
       complete: (resultados) => {
-        const datosLimpios = resultados.data.filter(fila => fila.Idioma);
+        const datosLimpios = resultados.data
+          .filter(fila => fila.Idioma || fila.Curso || fila.Taller)
+          .map(fila => ({
+            ...fila,
+            NombreCurso: fila.Curso || fila.Idioma || fila.Taller || '',
+            ColorFondo: fila.ColorFondo || fila.colorFondo || null,
+            ColorOcupada: fila.ColorOcupada || fila.colorOcupada || null,
+            ColorDisponible: fila.ColorDisponible || fila.colorDisponible || null,
+            ColorBloqueFondo: fila.ColorBloqueFondo || fila.colorBloqueFondo || null,
+            ColorBloqueTexto: fila.ColorBloqueTexto || fila.colorBloqueTexto || null,
+          }));
+
         setHorarios(datosLimpios);
         sessionStorage.setItem('cupos_cache', JSON.stringify(datosLimpios));
         setCargando(false);
