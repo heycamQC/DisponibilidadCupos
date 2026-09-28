@@ -22,9 +22,10 @@ export const useHorarios = () => {
       header: true,
       complete: (resultados) => {
         const datosLimpios = resultados.data
-          .filter(fila => fila.Idioma || fila.Curso || fila.Taller)
+          .filter(fila => fila.ID || fila.Idioma || fila.Curso || fila.Taller)
           .map(fila => ({
             ...fila,
+            ID: fila.ID ? String(fila.ID).trim().toLowerCase() : '',
             NombreCurso: fila.Curso || fila.Idioma || fila.Taller || '',
             ColorFondo: fila.ColorFondo || fila.colorFondo || null,
             ColorOcupada: fila.ColorOcupada || fila.colorOcupada || null,

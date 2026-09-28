@@ -29,11 +29,12 @@ function App() {
 
   // Lectura de parámetros URL (convertidos a strings puros para evitar warnings del React Compiler)
   const searchParams = new URLSearchParams(window.location.search);
+  const parametroIdUrl = String(searchParams.get("id") || "").toLowerCase().trim();
   const parametroCursoUrl = String(searchParams.get("curso") || searchParams.get("taller") || searchParams.get("idioma") || "");
   const parametroPlanUrl = String(searchParams.get("plan") || searchParams.get("modalidad") || "");
   const parametroVista = String(searchParams.get("vista") || "");
 
-  const esVistaEstudiante = Boolean(parametroCursoUrl);
+  const esVistaEstudiante = Boolean(parametroIdUrl ||parametroCursoUrl);
 
   const horariosActivos = useMemo(() => {
     return horarios.filter(h => h.Estado !== 'Inactivo');
@@ -55,10 +56,17 @@ function App() {
   let cursoRealAMostrar = "";
   
   if (esVistaEstudiante) {
-    const cursoEncontrado = cursosDisponibles.find(
-      c => normalizarTexto(c) === normalizarTexto(parametroCursoUrl)
-    );
-    cursoRealAMostrar = cursoEncontrado || parametroCursoUrl;
+    if (parametroIdUrl) {
+      const filaEncontrada = horariosActivos.find(
+        h => h.ID && String(h.ID).toLowerCase().trim() === parametroIdUrl
+      );
+      cursoRealAMostrar = filaEncontrada ? filaEncontrada.NombreCurso : parametroCursoUrl;
+    } else {
+      const cursoEncontrado = cursosDisponibles.find(
+        c => normalizarTexto(c) === normalizarTexto(parametroCursoUrl)
+      );
+      cursoRealAMostrar = cursoEncontrado || parametroCursoUrl;
+    }
   } else {
     cursoRealAMostrar = cursoSeleccionado || (cursosDisponibles.length > 0 ? cursosDisponibles[0] : "");
   }
@@ -119,7 +127,7 @@ function App() {
       borderRadius: esVistaEstudiante ? '0px' : '16px'
     }}>
       <div className="cabecera">
-        <h1 className="titulo">Disponibilidad de Cupos {cursoRealAMostrar}</h1>
+        <h1 className="titulo">Disponibilidad de Cupos <br></br>{cursoRealAMostrar}</h1>
 
         <div className="leyenda">
           <div className="item-leyenda">
@@ -153,7 +161,7 @@ function App() {
 
       {horariosSinModalidad.length > 0 && (
         <div className="seccion-modalidad">
-          <h2 className="subtitulo">Talleres {cursoRealAMostrar}</h2>
+          <h2 className="subtitulo">Horarios</h2>
           {horariosSinModalidad.map((horario, index) => (
             <FilaHorario key={`sin-modalidad-${index}`} dato={horario} temaColores={temaActual} />
           ))}
